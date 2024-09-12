@@ -8,6 +8,7 @@ const PUBLIC_URL = import.meta.env.BASE_URL;
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
 const Resume = lazy(() => import("./pages/Resume"));
+const Projects = lazy(() => import("./pages/Projects"));
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
