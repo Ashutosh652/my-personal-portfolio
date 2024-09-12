@@ -6,6 +6,7 @@ import "./static/css/main.scss"; // All of our styles
 const PUBLIC_URL = import.meta.env.BASE_URL;
 
 const Index = lazy(() => import("./pages/Index"));
+const About = lazy(() => import("./pages/About"));
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Suspense fallback={<Main />}>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
