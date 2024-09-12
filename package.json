@@ -15,6 +15,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@vavt/vite-plugin-import-markdown": "^1.0.1",
+    "dayjs": "^1.11.13",
     "markdown-to-jsx": "^7.5.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",
