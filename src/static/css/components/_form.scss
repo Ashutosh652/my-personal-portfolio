@@ -1,11 +1,11 @@
-/* Form */
+// /* Form */
 
 form {
   margin: 0 0 _size(element-margin) 0;
 
   &.search {
-    @include icon;
     position: relative;
+    @include icon;
 
     &:before {
       color: _palette(fg-light);
@@ -63,9 +63,9 @@ textarea {
 }
 
 .select-wrapper {
-  @include icon;
   display: block;
   position: relative;
+  @include icon;
 
   &:before {
     color: _palette(border);
@@ -108,7 +108,6 @@ input[type="radio"] {
   z-index: -1;
 
   & + label {
-    @include icon;
     color: _palette(fg);
     cursor: pointer;
     display: inline-block;
@@ -117,7 +116,8 @@ input[type="radio"] {
     padding-left: (_size(element-height) * 0.6) + 0.75em;
     padding-right: 0.75em;
     position: relative;
-
+    @include icon;
+    
     &:before {
       background: _palette(border-bg);
       border: solid 1px _palette(border);

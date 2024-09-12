@@ -48,8 +48,8 @@ ul {
       }
 
       > * {
-        @include icon;
         border: 0;
+        @include icon;
 
         .label {
           display: none;
