@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
+import ReactDOMServer from "react-dom/server";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleDown } from "@fortawesome/free-regular-svg-icons/faArrowAltCircleDown";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import html2pdf from "html2pdf.js";
 
@@ -12,6 +14,7 @@ import Experience from "../components/Resume/Experience";
 import Skills from "../components/Resume/Skills";
 import Certifications from "../components/Resume/Certifications";
 import Courses from "../components/Resume/Courses";
+import ResumeForDownload from "../components/Resume/ResumeForDownload";
 
 import courses from "../data/resume/courses";
 import degrees from "../data/resume/degrees";
@@ -29,19 +32,25 @@ const sections = {
 };
 
 const Resume = () => {
-  const pdfRef = useRef();
-
+  const [isDownloading, setIsDownloading] = useState(false);
   const downloadPDF = () => {
-    const element = pdfRef.current;
+    setIsDownloading(true);
+    const element = ReactDOMServer.renderToString(<ResumeForDownload />);
     const opt = {
       margin: 10,
-      filename: 'AshutoshChapagainResume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
+      filename: "AshutoshChapagainResume.pdf",
+      image: { type: "png", quality: 1 },
       html2canvas: { scale: 1 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
     };
 
-    html2pdf().set(opt).from(element).save();
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .save()
+      .then(() => {
+        setIsDownloading(false);
+      });
   };
 
   return (
@@ -50,11 +59,16 @@ const Resume = () => {
       description="Ashutosh Chapagain's Resume. Milo Logic and Tech Temple"
     >
       <div className="download-button">
-        <button onClick={downloadPDF}>
-          <FontAwesomeIcon icon={faArrowAltCircleDown} /> Download PDF
+        <button onClick={downloadPDF} disabled={isDownloading}>
+          {isDownloading ? (
+            <FontAwesomeIcon icon={faSpinner} />
+          ) : (
+            <FontAwesomeIcon icon={faArrowAltCircleDown} />
+          )}{" "}
+          Download PDF
         </button>
       </div>
-      <article className="post" id="resume" ref={pdfRef}>
+      <article className="post" id="resume">
         <header>
           <div className="title">
             <h2>
