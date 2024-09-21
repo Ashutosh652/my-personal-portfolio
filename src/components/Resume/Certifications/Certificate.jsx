@@ -10,23 +10,26 @@ const Certificate = ({
       <h4>
         <a href={url}>{title}</a>
       </h4>
-      <p>
-        {provider} &#x2022; Issued {dayjs(issuedDate).format("MMMM YYYY")}
-        <div className="certificate-details">
-          {credentialId ? <span>Credential ID:{credentialId}</span> : null}
-          <br />
-          {skills ? (
-            <span>
-              Skills:{" "}
-              {skills.map(
-                (skill, index) =>
-                  `${skill}${index !== skills.length - 1 ? " • " : ""}`
-              )}
-            </span>
-          ) : null}
-        </div>
-      </p>
     </header>
+    <div className="body">
+      <div className="subtitle">
+        {provider} &#x2022; Issued {dayjs(issuedDate).format("MMMM YYYY")}
+      </div>
+      <div className="content"><p>
+        {credentialId ? <>Credential ID:{credentialId}</> : null}
+        <br />
+      {skills ? (
+        <>
+          Skills:{" "}
+          {skills.map(
+            (skill, index) =>
+              `${skill}${index !== skills.length - 1 ? " • " : ""}`
+          )}
+          </>
+        ) : null}
+      </p>
+      </div>
+    </div>
   </article>
 );
 

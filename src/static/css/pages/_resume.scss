@@ -51,6 +51,34 @@
     }
   }
 
+  .certificate-container {
+    margin-bottom: 1em;
+    h4 {
+      margin-bottom: 0;
+    }
+    .body {
+      margin-top: 0;
+      margin-bottom: 0;
+      letter-spacing: 0.1em;
+
+      .subtitle {
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        // text-transform: uppercase;
+        color: #4c4c4c;
+        font-size: 0.8em;
+      }
+      .content {
+        p {
+          margin: 0;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+
   .certificate-details {
     margin-top: 0;
     margin-bottom: 0;
