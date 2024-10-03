@@ -68,6 +68,7 @@ const Resume = () => {
           Download PDF
         </button>
       </div>
+
       <article className="post" id="resume">
         <header>
           <div className="title">
