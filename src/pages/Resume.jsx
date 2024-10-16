@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import ReactDOMServer from "react-dom/server";
+import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleDown } from "@fortawesome/free-regular-svg-icons/faArrowAltCircleDown";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-import html2pdf from "html2pdf.js";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import Main from "../layouts/Main";
 
@@ -33,40 +29,21 @@ const sections = {
 };
 
 const Resume = () => {
-  const [isDownloading, setIsDownloading] = useState(false);
-  const downloadPDF = () => {
-    setIsDownloading(true);
-    const element = ReactDOMServer.renderToString(<CV />);
-    const opt = {
-      margin: 10,
-      filename: "AshutoshChapagainResume.pdf",
-      image: { type: "png", quality: 1 },
-      html2canvas: { scale: 1 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
-
-    html2pdf()
-      .set(opt)
-      .from(element)
-      .save()
-      .then(() => {
-        setIsDownloading(false);
-      });
-  };
-
   return (
     <Main
       title="Resume"
       description="Ashutosh Chapagain's Resume. Milo Logic and Tech Temple"
     >
       <div className="download-button">
-        <button onClick={downloadPDF} disabled={isDownloading}>
-          {isDownloading ? (
-            <FontAwesomeIcon icon={faSpinner} />
-          ) : (
-            <FontAwesomeIcon icon={faArrowAltCircleDown} />
-          )}{" "}
-          Download CV
+        <button>
+          <PDFDownloadLink
+            document={<CV />}
+            fileName="AshutoshChapagainResume.pdf"
+          >
+            {({ blob, url, loading, error }) => {
+              return loading ? "Loading CV..." : "Download CV";
+            }}
+          </PDFDownloadLink>
         </button>
       </div>
 

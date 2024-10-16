@@ -18,7 +18,6 @@
     "@react-pdf/renderer": "^4.0.0",
     "@vavt/vite-plugin-import-markdown": "^1.0.1",
     "dayjs": "^1.11.13",
-    "html2pdf.js": "^0.10.2",
     "markdown-to-jsx": "^7.5.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.8.1",
