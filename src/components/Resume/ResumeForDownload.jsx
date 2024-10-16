@@ -10,7 +10,6 @@ import { skills } from "../../data/resume/skills";
 import projects from "../../data/projects";
 
 const ResumeForDownload = () => {
-  console.log(certificates);
   return (
     <div className="resume-container">
       <header>
@@ -34,7 +33,7 @@ const ResumeForDownload = () => {
         <h2>Summary</h2>
         <p>
           Software Engineer with experience in Backend Development (Django REST
-          Framework), seeking full-time Software Developer roles.
+          Framework, Flask, FastAPI), seeking full-time Software Developer roles.
         </p>
       </section>
 
