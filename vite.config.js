@@ -6,4 +6,11 @@ import markdown from "@vavt/vite-plugin-import-markdown";
 export default defineConfig({
   plugins: [react(), markdown()],
   base: "/",
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
 });

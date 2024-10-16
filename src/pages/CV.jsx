@@ -16,7 +16,6 @@ import certificates from "../data/resume/certificates";
 
 Font.register({
   family: "Volkhov",
-  src: "http://fonts.gstatic.com/s/volkhov/v8/uk1C5e7mNyA0JcFqyN2lwQ.ttf",
   fonts: [
     { src: "/assets/fonts/Volkhov/Volkhov-Regular.ttf", fontStyle: "normal" },
     { src: "/assets/fonts/Volkhov/Volkhov-Bold.ttf", fontStyle: "bold" },
