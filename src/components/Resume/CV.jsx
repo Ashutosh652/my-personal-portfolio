@@ -9,7 +9,7 @@ import work from "../../data/resume/work";
 import { skills } from "../../data/resume/skills";
 import projects from "../../data/projects";
 
-const ResumeForDownload = () => {
+const CV = () => {
   return (
     <div className="resume-container">
       <header>
@@ -105,4 +105,4 @@ const ResumeForDownload = () => {
   );
 };
 
-export default ResumeForDownload;
+export default CV;

@@ -14,7 +14,7 @@ import Experience from "../components/Resume/Experience";
 import Skills from "../components/Resume/Skills";
 import Certifications from "../components/Resume/Certifications";
 import Courses from "../components/Resume/Courses";
-import ResumeForDownload from "../components/Resume/ResumeForDownload";
+import CV from "../components/Resume/CV";
 
 import courses from "../data/resume/courses";
 import degrees from "../data/resume/degrees";
@@ -35,7 +35,7 @@ const Resume = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const downloadPDF = () => {
     setIsDownloading(true);
-    const element = ReactDOMServer.renderToString(<ResumeForDownload />);
+    const element = ReactDOMServer.renderToString(<CV />);
     const opt = {
       margin: 10,
       filename: "AshutoshChapagainResume.pdf",
@@ -65,7 +65,7 @@ const Resume = () => {
           ) : (
             <FontAwesomeIcon icon={faArrowAltCircleDown} />
           )}{" "}
-          Download PDF
+          Download CV
         </button>
       </div>
 
