@@ -17,13 +17,13 @@ import certificates from "../data/resume/certificates";
 Font.register({
   family: "Volkhov",
   fonts: [
-    { src: "/assets/fonts/Volkhov/Volkhov-Regular.ttf", fontStyle: "normal" },
-    { src: "/assets/fonts/Volkhov/Volkhov-Bold.ttf", fontStyle: "bold" },
+    { src: "/public/assets/fonts/Volkhov/Volkhov-Regular.ttf", fontStyle: "normal" },
+    { src: "/public/assets/fonts/Volkhov/Volkhov-Bold.ttf", fontStyle: "bold" },
     {
-      src: "/assets/fonts/Volkhov/Volkhov-BoldItalic.ttf",
+      src: "/public/assets/fonts/Volkhov/Volkhov-BoldItalic.ttf",
       fontStyle: "bolditalic",
     },
-    { src: "/assets/fonts/Volkhov/Volkhov-Italic.ttf", fontStyle: "italic" },
+    { src: "/public/assets/fonts/Volkhov/Volkhov-Italic.ttf", fontStyle: "italic" },
   ],
 });
 
