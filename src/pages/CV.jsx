@@ -8,6 +8,11 @@ import {
   Font,
   Link,
 } from "@react-pdf/renderer";
+import degrees from "../data/resume/degrees";
+import { skills } from "../data/resume/skills";
+import work from "../data/resume/work";
+import projects from "../data/projects";
+import certificates from "../data/resume/certificates";
 
 Font.register({
   family: "Volkhov",
@@ -76,6 +81,8 @@ const styles = StyleSheet.create({
 });
 
 const CV = () => {
+  console.log(certificates);
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -124,17 +131,15 @@ const CV = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Education</Text>
           <View style={styles.hr} />
-          <View style={styles.flexRow}>
-            <Text>
-              <Text style={styles.sectionSubtitle}>
-                Bachelor of Computer Engineering
+          {degrees.map((degree) => (
+            <View style={styles.flexRow} key={degree.degree}>
+              <Text>
+                <Text style={styles.sectionSubtitle}>{degree.degree}</Text>
+                <Text style={styles.sectionContent}>, {degree.school}</Text>
               </Text>
-              <Text style={styles.sectionContent}>
-                , Nepal Engineering College, Pokhara University
-              </Text>
-            </Text>
-            <Text style={styles.sectionContent}>2018-2023</Text>
-          </View>
+              <Text style={styles.sectionContent}>{degree.year}</Text>
+            </View>
+          ))}
         </View>
 
         {/* Skills */}
@@ -146,8 +151,10 @@ const CV = () => {
               Technical Skills
             </Text>
             <Text style={[styles.sectionContent, { width: "80%" }]}>
-              Python, Django, Django REST Framework, Flask, FastAPI, PostgreSQL,
-              Pandas, Numpy, Web Scraping
+              {skills
+                .filter((skill) => skill.showInCV && skill.type === "technical")
+                .map((skill) => skill.title)
+                .join(", ")}
             </Text>
           </View>
           <View style={styles.flexRow}>
@@ -155,8 +162,10 @@ const CV = () => {
               Soft Skills
             </Text>
             <Text style={[styles.sectionContent, { width: "80%" }]}>
-              Analytical Skills, Time Management Skills, Communication,
-              Collaboration
+              {skills
+                .filter((skill) => skill.showInCV && skill.type === "soft")
+                .map((skill) => skill.title)
+                .join(", ")}
             </Text>
           </View>
         </View>
@@ -165,126 +174,74 @@ const CV = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Experience</Text>
           <View style={styles.hr} />
-          <View>
-            <View style={styles.flexRow}>
-              <Text style={styles.sectionSubtitle}>Backend Developer</Text>
-              <Text style={styles.sectionContent}>Jan 2024 - Present</Text>
+          {work.map((job, index) => (
+            <View
+              key={`${job.name}-${job.position}`}
+              style={index > 0 ? styles.topMargin : {}}
+            >
+              <View style={styles.flexRow}>
+                <Text style={styles.sectionSubtitle}>{job.position}</Text>
+                <Text style={styles.sectionContent}>
+                  {job.startDate} - {job.endDate ? job.endDate : "PRESENT"}
+                </Text>
+              </View>
+              <View style={styles.flexRow}>
+                <Text style={styles.sectionContent}>{job.name}</Text>
+                <Text style={styles.sectionContent}>Kathmandu, Nepal</Text>
+              </View>
+              <View>
+                {job.highlights.map((highlight) => (
+                  <Text
+                    key={highlight}
+                    style={[styles.sectionContent, styles.bulletPoint]}
+                  >
+                    {"\u2022"} {highlight}
+                  </Text>
+                ))}
+              </View>
             </View>
-            <View style={styles.flexRow}>
-              <Text style={styles.sectionContent}>Milo Logic Pvt. Ltd.</Text>
-              <Text style={styles.sectionContent}>Kathmandu, Nepal</Text>
-            </View>
-            <View>
-              <Text style={[styles.sectionContent, styles.bulletPoint]}>
-                {"\u2022"} Developed the backend of a SaaS to use internally in
-                the company as well as to sell it as a product.
-              </Text>
-              <Text style={[styles.sectionContent, styles.bulletPoint]}>
-                {"\u2022"} Developed a web scraping system using Selenium to
-                scrape data from websites in order to use for training AI
-                models.
-              </Text>
-              <Text style={[styles.sectionContent, styles.bulletPoint]}>
-                {"\u2022"} Developed a tool to rank resumes using spaCy and NLTK
-                based on the contents of the resume and the job description.
-              </Text>
-              <Text style={[styles.sectionContent, styles.bulletPoint]}>
-                {"\u2022"} Developed and deployed quick proof of concept APIs
-                (built using FastAPI) on a Virtual Private Server.
-              </Text>
-              <Text style={[styles.sectionContent, styles.bulletPoint]}>
-                {"\u2022"} Developed custom APIs for no-code/low-code ERP/CRM
-                platforms like Odoo and Frappe. Managed the development and
-                deployment of the APIs on a development server on Linode.
-              </Text>
-            </View>
-          </View>
-          <View style={styles.topMargin}>
-            <View style={styles.flexRow}>
-              <Text style={styles.sectionSubtitle}>Python Developer</Text>
-              <Text style={styles.sectionContent}>Oct 2023 - Jan 2024</Text>
-            </View>
-            <View style={styles.flexRow}>
-              <Text style={styles.sectionContent}>Tech Temple</Text>
-              <Text style={styles.sectionContent}>Kathmandu, Nepal</Text>
-            </View>
-            <View>
-              <Text style={[styles.sectionContent, styles.bulletPoint]}>
-                {"\u2022"} Developed a template for a CMS using Flask that aided
-                in quick development of future projects.
-              </Text>
-            </View>
-          </View>
+          ))}
         </View>
 
         {/* Projects */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Projects</Text>
           <View style={styles.hr} />
-          <Text>
-            <Text style={styles.sectionSubtitle}>
-              Crop Production Prediction.
+          {projects.map((project, index) => (
+            <Text key={project.title} style={index > 0 ? styles.topMargin : {}}>
+              <Text style={styles.sectionSubtitle}>{project.title}.</Text>
+              <Text style={styles.sectionContent}>
+                {" "}
+                {project.desc}{" "}
+                {project.sourceCodeLinks.map((link) => (
+                  <Link key={link.link} src={link.link}>
+                    ({link.linkTitle}){" "}
+                  </Link>
+                ))}
+              </Text>
             </Text>
-            <Text style={styles.sectionContent}>
-              {" "}
-              Built a website to predict the production amount of five crops
-              (Paddy, Maize, Millet, Barley, Wheat) in each disctrict of Nepal.
-              The website is developed using Django REST Framework for backend
-              and ReactJS for frontend. The climate data of each of Nepal's
-              districts were collected using NASA's Power Access API. The crop
-              production data of 31 years of each district was obtained from
-              ICIMOD's website. The data was processed and explored and various
-              models were trained. The best performing model was integrated in
-              the website.{" "}
-              <Link src="http://www.google.com">(Data Processing)</Link>{" "}
-              <Link src="http://www.google.com">(Backend)</Link>{" "}
-              <Link src="http://www.google.com">(Frontend)</Link>
-            </Text>
-          </Text>
-          <Text style={styles.topMargin}>
-            <Text style={styles.sectionSubtitle}>RamroBazar</Text>
-            <Text style={styles.sectionContent}>
-              {" "}
-              A C2C e-commerce website built using Django REST framework for
-              back-end APIs and React for front-end.
-            </Text>
-          </Text>
-          <Text style={styles.topMargin}>
-            <Text style={styles.sectionSubtitle}>PokeWeb</Text>
-            <Text style={styles.sectionContent}>
-              {" "}
-              A website front-end created using ReactJS and PokeAPI
-              (https://pokeapi.co/) treating pokemon cards as products where you
-              can buy those pokemon cards.
-            </Text>
-          </Text>
-          <Text style={styles.topMargin}>
-            <Text style={styles.sectionSubtitle}>Birthday Wisher</Text>
-            <Text style={styles.sectionContent}>
-              {" "}
-              A simple python script built using Selenium that sends happy
-              birthday message at 12:00am(+30sec error margin) to anyone whose
-              birthday is in the provided excel file.
-            </Text>
-          </Text>
+          ))}
         </View>
 
         {/* Certifications */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Certifications</Text>
           <View style={styles.hr} />
-          <View>
-              <Text style={styles.sectionSubtitle}>Neural Networks and Deep Learning</Text>
-              <Text style={styles.sectionContent}>DeepLearning.AI</Text>
-              <Text style={styles.sectionContent}>Issued April 2024</Text>
-              <Link style={styles.sectionContent} src="http://www.google.com">(View Credential)</Link>
-          </View>
-          <View style={styles.topMargin}>
-              <Text style={styles.sectionSubtitle}>Neural Networks and Deep Learning</Text>
-              <Text style={styles.sectionContent}>DeepLearning.AI</Text>
-              <Text style={styles.sectionContent}>Issued April 2024</Text>
-              <Link style={styles.sectionContent} src="http://www.google.com">(View Credential)</Link>
-          </View>
+          {certificates.map((certificate, index) => (
+            <View
+              key={certificate.title}
+              style={index > 0 ? styles.topMargin : {}}
+            >
+              <Text style={styles.sectionSubtitle}>{certificate.title}</Text>
+              <Text style={styles.sectionContent}>{certificate.provider}</Text>
+              <Text style={styles.sectionContent}>
+                Issued {certificate.issuedDate}
+              </Text>
+              <Link style={styles.sectionContent} src={certificate.url}>
+                (View Credential)
+              </Link>
+            </View>
+          ))}
         </View>
       </Page>
     </Document>

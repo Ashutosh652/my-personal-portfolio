@@ -23,7 +23,14 @@ import CV from "./CV";
 const sections = {
   Education: () => <Education data={degrees} />,
   Experience: () => <Experience data={work} />,
-  Skills: () => <Skills skills={skills} categories={categories} />,
+  Skills: () => (
+    <Skills
+      skills={skills.filter((skill) => {
+        return skill.showInWebsite;
+      })}
+      categories={categories}
+    />
+  ),
   Certifications: () => <Certifications data={certificates} />,
   Courses: () => <Courses data={courses} />,
 };
