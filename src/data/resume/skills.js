@@ -71,7 +71,7 @@ const skills = [
   },
   {
     title: "Python",
-    competency: 5,
+    competency: 4.5,
     category: ["Languages", "Python", "ML Engineering"],
   },
   {
@@ -96,7 +96,7 @@ const skills = [
   },
   {
     title: "Django/Django REST Framework",
-    competency: 5,
+    competency: 4.5,
     category: ["Web Development", "Python"],
   },
   {
