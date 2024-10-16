@@ -14,13 +14,14 @@ import Experience from "../components/Resume/Experience";
 import Skills from "../components/Resume/Skills";
 import Certifications from "../components/Resume/Certifications";
 import Courses from "../components/Resume/Courses";
-import CV from "../components/Resume/CV";
 
 import courses from "../data/resume/courses";
 import degrees from "../data/resume/degrees";
 import certificates from "../data/resume/certificates";
 import work from "../data/resume/work";
 import { skills, categories } from "../data/resume/skills";
+
+import CV from "./CV";
 
 // NOTE: sections are displayed in order defined.
 const sections = {

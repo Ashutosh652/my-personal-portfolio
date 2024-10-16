@@ -3,11 +3,11 @@ import dayjs from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-import degrees from "../../data/resume/degrees";
-import certificates from "../../data/resume/certificates";
-import work from "../../data/resume/work";
-import { skills } from "../../data/resume/skills";
-import projects from "../../data/projects";
+import degrees from "../data/resume/degrees";
+import certificates from "../data/resume/certificates";
+import work from "../data/resume/work";
+import { skills } from "../data/resume/skills";
+import projects from "../data/projects";
 
 const CV = () => {
   return (
@@ -33,7 +33,8 @@ const CV = () => {
         <h2>Summary</h2>
         <p>
           Software Engineer with experience in Backend Development (Django REST
-          Framework, Flask, FastAPI), seeking full-time Software Developer roles.
+          Framework, Flask, FastAPI), seeking full-time Software Developer
+          roles.
         </p>
       </section>
 
@@ -96,7 +97,14 @@ const CV = () => {
         <ul>
           {certificates.map((certificate) => (
             <li key={certificate.title}>
-              <a className="certificate-link" href="http://www.google.com"><strong>{certificate.title} <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></strong></a> - {certificate.provider} - Issued {dayjs(certificate.issuedDate).format("MMMM YYYY")}
+              <a className="certificate-link" href="http://www.google.com">
+                <strong>
+                  {certificate.title}{" "}
+                  <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                </strong>
+              </a>{" "}
+              - {certificate.provider} - Issued{" "}
+              {dayjs(certificate.issuedDate).format("MMMM YYYY")}
             </li>
           ))}
         </ul>
