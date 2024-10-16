@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import ReactPDF from "@react-pdf/renderer";
 
 import Main from "../layouts/Main";
 
@@ -36,21 +35,32 @@ const sections = {
 };
 
 const Resume = () => {
+  const downloadPdf = async () => {
+    // Create a PDF document from the CV component
+    const pdf = ReactPDF.pdf(<CV />);
+
+    // Render the PDF and get a Blob
+    const blob = await pdf.toBlob();
+
+    // Create a URL for the Blob and trigger a download
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "AshutoshChapagainResume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <Main
       title="Resume"
       description="Ashutosh Chapagain's Resume. Milo Logic and Tech Temple"
     >
       <div className="download-button">
-        <button>
-          <PDFDownloadLink
-            document={<CV />}
-            fileName="AshutoshChapagainResume.pdf"
-          >
-            {({ blob, url, loading, error }) => {
-              return loading ? "Loading CV..." : "Download CV";
-            }}
-          </PDFDownloadLink>
+        <button onClick={downloadPdf}>
+          Download CV
         </button>
       </div>
 
