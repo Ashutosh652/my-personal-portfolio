@@ -81,8 +81,6 @@ const styles = StyleSheet.create({
 });
 
 const CV = () => {
-  console.log(certificates);
-
   return (
     <Document>
       <Page size="A4" style={styles.page}>
