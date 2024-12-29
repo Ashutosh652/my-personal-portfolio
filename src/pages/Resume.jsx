@@ -56,7 +56,7 @@ const Resume = () => {
   return (
     <Main
       title="Resume"
-      description="Ashutosh Chapagain's Resume. Milo Logic and Tech Temple"
+      description="Ashutosh Chapagain's Resume."
     >
       <div className="download-button">
         <button onClick={downloadPdf}>
