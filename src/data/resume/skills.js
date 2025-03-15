@@ -1,7 +1,7 @@
 const skills = [
   {
     title: "Javascript",
-    competency: 3.5,
+    competency: 3,
     category: ["Web Development", "Languages", "Javascript"],
     showInCV: false,
     type: "technical",
@@ -9,7 +9,7 @@ const skills = [
   },
   {
     title: "Node.JS",
-    competency: 2,
+    competency: 1,
     category: ["Web Development", "Javascript"],
     showInCV: false,
     type: "technical",
@@ -33,7 +33,7 @@ const skills = [
   },
   {
     title: "PostgreSQL/SQLite3/SQL",
-    competency: 4,
+    competency: 3.15,
     category: ["Web Development", "Databases", "Languages"],
     showInCV: true,
     type: "technical",
@@ -41,7 +41,7 @@ const skills = [
   },
   {
     title: "Express.JS",
-    competency: 2.5,
+    competency: 1,
     category: ["Web Development", "Javascript"],
     showInCV: false,
     type: "technical",
@@ -49,7 +49,7 @@ const skills = [
   },
   {
     title: "Flask",
-    competency: 4,
+    competency: 3.25,
     category: ["Web Development", "Python"],
     showInCV: true,
     type: "technical",
@@ -57,7 +57,7 @@ const skills = [
   },
   {
     title: "FastAPI",
-    competency: 3.5,
+    competency: 3.75,
     category: ["Web Development", "Python"],
     showInCV: true,
     type: "technical",
@@ -80,38 +80,6 @@ const skills = [
     showInWebsite: true
   },
   {
-    title: "Numpy",
-    competency: 2,
-    category: ["Data Science", "Data Engineering", "Python", "ML Engineering"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
-    title: "Jupyter Notebook",
-    competency: 3,
-    category: ["Data Science", "Python"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
-    title: "Typescript",
-    competency: 1,
-    category: ["Web Development", "Languages", "Javascript"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
-    title: "HTML + CSS",
-    competency: 4,
-    category: ["Web Development", "Languages"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
     title: "Python",
     competency: 4.5,
     category: ["Languages", "Python", "ML Engineering"],
@@ -120,32 +88,8 @@ const skills = [
     showInWebsite: true
   },
   {
-    title: "C++",
-    competency: 1,
-    category: ["Languages"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
     title: "Pandas",
     competency: 2.5,
-    category: ["Data Engineering", "ML Engineering", "Python"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
-    title: "Matplotlib",
-    competency: 2,
-    category: ["Data Engineering", "ML Engineering", "Python"],
-    showInCV: false,
-    type: "technical",
-    showInWebsite: true
-  },
-  {
-    title: "Scikit-Learn",
-    competency: 2,
     category: ["Data Engineering", "ML Engineering", "Python"],
     showInCV: false,
     type: "technical",
@@ -161,43 +105,11 @@ const skills = [
   },
   {
     title: "ReactJS",
-    competency: 2.5,
+    competency: 2,
     category: ["Web Development", "Javascript"],
     showInCV: false,
     type: "technical",
     showInWebsite: true
-  },
-  {
-    title: "Analytical Skills",
-    competency: 2.5,
-    category: [],
-    showInCV: true,
-    type: "soft",
-    showInWebsite: false
-  },
-  {
-    title: "Time Management Skills",
-    competency: 2.5,
-    category: [],
-    showInCV: true,
-    type: "soft",
-    showInWebsite: false
-  },
-  {
-    title: "Communication",
-    competency: 2.5,
-    category: [],
-    showInCV: true,
-    type: "soft",
-    showInWebsite: false
-  },
-  {
-    title: "Collaboration",
-    competency: 2.5,
-    category: [],
-    showInCV: true,
-    type: "soft",
-    showInWebsite: false
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 

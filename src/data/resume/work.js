@@ -14,7 +14,7 @@
 const work = [
   {
     name: "NumericMind",
-    position: "Python Developer",
+    position: "Python Backend Developer",
     url: "https://www.numericmind.com/",
     startDate: "2024-11-04",
     summary:
@@ -33,7 +33,7 @@ const work = [
       "Developed the Backend for a SaaS system to use internally in the company as well as to sell it as a product.",
       "Developed a web scraping system using Selenium to scrape data from websites in order to use for training AI models.",
       "Developed and deployed quick proof of concept APIs (built using FastAPI) on a Virtual Private Server.",
-      "Developed custom APIs for no-code/low-code ERP/CRM platforms like Odoo and Frappe. Managed the development and deployment of the APIs on a development server on Linode.",
+      "Developed custom APIs for no-code/low-code ERP/CRM platforms like Odoo. Managed the development and deployment of the APIs on a development server on Linode.",
     ],
   },
   {
